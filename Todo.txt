@@ -1,0 +1,9 @@
+-Blog: comments / posts / likes / signals ...etc
+-->models created
+-->postController created
+
+
+-orders: related to products
+-messages
+-friends
+-cart
