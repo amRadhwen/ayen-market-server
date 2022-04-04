@@ -5,9 +5,9 @@ const {handlePathError} = require("../middlewares/errMiddleware");
 // create product
 const createProduct = asyncHandler(async (req, res) => {
 	if(Object.keys(req.body).length) {
-		let data = {name, price, salePrice, discount, pictures, shortDetails, description, stock, _new, sale, category, colors, tags, rating, variants} = req.body;
+		const {name, price, salePrice, discount, pictures, shortDetails, description, stock, _new, sale, category, colors, tags, rating, variants} = req.body;
 		const user = req.user._id;
-		data = {...data, user};
+		const data = {name, price, salePrice, discount, pictures, shortDetails, description, stock, _new, sale, category, colors, tags, rating, variants, user};
 		try {
 			const product = await Product.create(data);
 			if(product) {

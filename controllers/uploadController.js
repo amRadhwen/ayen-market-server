@@ -6,8 +6,8 @@ const asyncHandler = require("express-async-handler");
 const { 
     uploadUAvatar,
 
-    uploadPCover,
-    uploadPImages,
+    uploadPPictures,
+    uploadPVariant,
     uploadPVideo,
 
     uploadPtCover,
@@ -30,9 +30,10 @@ const uploadUserAvatar = asyncHandler(async (req, res) => {
 })
 
 //product
+// upload product variant
 
-const uploadProductCover = asyncHandler( async (req, res) => {
-    uploadPCover(req, res, (err)=>{
+const uploadProductVariant = asyncHandler( async (req, res) => {
+    uploadPVariant(req, res, (err)=>{
         try {
             res.json({path: `/${req.file.destination.split("/")[req.file.destination.split("/").length-2]}/${req.file.destination.split("/")[req.file.destination.split("/").length-1]}/${req.file.filename}`});
         }
@@ -48,8 +49,8 @@ const uploadProductCover = asyncHandler( async (req, res) => {
 // when images number bypass max count( in here it's 4)  it do the job with only the 4 images
 // when a file is not a valid image it do the job from the index 0 to the index of the invalid file -1
 // so this must be fixed
-const uploadProductImages = asyncHandler( async (req, res) => {
-    uploadPImages(req, res, (err)=>{
+const uploadProductPictures = asyncHandler( async (req, res) => {
+    uploadPPictures(req, res, (err)=>{
         if(!req.files.length){
             console.error("Empty Request");
             return res.status(400).json({error: "Empty request"});
@@ -131,8 +132,8 @@ const uploadPostVideo = asyncHandler( async (req, res) => {
 module.exports = {
     uploadUserAvatar,
     
-    uploadProductCover,
-    uploadProductImages,
+    uploadProductPictures,
+    uploadProductVariant,
     uploadProductVideo,
 
     uploadPostCover,

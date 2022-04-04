@@ -4,8 +4,9 @@ const { uploadImage, uploadVideo } = require("../utils/fileHandler");
 const uploadUAvatar = uploadImage(process.env.USERS_AVATARS_PATH).single("avatar");
 
 // Product data
-const uploadPCover = uploadImage(process.env.PRODUCTS_COVERS_PATH).single("cover");
-const uploadPImages = uploadImage(process.env.PRODUCTS_IMAGES_PATH).array("images", 3);
+//const uploadPCover = uploadImage(process.env.PRODUCTS_COVERS_PATH).single("cover");
+const uploadPVariant = uploadImage(process.env.PRODUCTS_VARIANTS_PATH).single("variant");
+const uploadPPictures = uploadImage(process.env.PRODUCTS_PICTURES_PATH).array("pictures", 3);
 const uploadPVideo = uploadVideo(process.env.PRODUCTS_VIDEOS_PATH).single("video");
 
 // Post data
@@ -17,8 +18,8 @@ module.exports = {
     // user avatar
     uploadUAvatar,
     //product
-    uploadPCover,
-    uploadPImages,
+    uploadPPictures,
+    uploadPVariant,
     uploadPVideo,
     //post
     uploadPtCover,

@@ -8,20 +8,32 @@ const shopSchema = new Schema({
 		required: true,
 		unique: true
 	},
-	desc: {
+	bio: {
 		type: String,
 		required: true
 	},
-	addr: {
+	address: {
 		type: String,
 		required: true
 	},
 	cover: {
 		type: String,
 	},
-	avatar: {
+	logo: {
 		type: String,
 	},
+	followers: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: "User"
+		}
+	],
+	reviews: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: "User"
+		}
+	],
 	socials: [
 		{
 			facebook: {

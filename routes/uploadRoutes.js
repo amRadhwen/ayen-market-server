@@ -4,23 +4,23 @@ const {protectAdmin, protectUser} = require("../middlewares/authMiddleware");
 
 const {
     uploadUserAvatar,
-    uploadProductCover,
-    uploadProductImages,
+    uploadProductPictures,
+    uploadProductVariant,
     uploadProductVideo,
     uploadPostCover,
     uploadPostImages,
     uploadPostVideo,
 } = require("../controllers/uploadController");
 
-Router.post("/user/cover", uploadUserAvatar);
+Router.post("/user/avatar", uploadUserAvatar);
 
-Router.post("/product/cover", uploadProductCover);
-Router.post("/product/images", uploadProductImages);
-Router.post("/product/video", uploadProductVideo);
+Router.post("/product/pictures", protectUser, (uploadProductPictures));
+Router.post("/product/variant", protectUser, uploadProductVariant);
+Router.post("/product/video", protectUser, uploadProductVideo);
 
-Router.post("/post/cover", uploadPostCover);
-Router.post("/post/images", uploadPostImages);
-Router.post("/post/video", uploadPostVideo);
+Router.post("/post/cover", protectAdmin, uploadPostCover);
+Router.post("/post/images", protectAdmin, uploadPostImages);
+Router.post("/post/video", protectAdmin, uploadPostVideo);
 
 
 module.exports = Router;
