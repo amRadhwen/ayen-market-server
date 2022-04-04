@@ -35,7 +35,7 @@ const createUser = asyncHandler(async (req, res)=>{
         const {
             firstName,
             lastName,
-            //username,
+            username,
             tel,
             email,
             prov,
@@ -48,6 +48,7 @@ const createUser = asyncHandler(async (req, res)=>{
         const data = {
             firstName,
             lastName,
+            username,
             tel,
             email,
             prov,
@@ -57,7 +58,7 @@ const createUser = asyncHandler(async (req, res)=>{
             birthDate,
             avatar
         };
-        const userExists = await User.findOne({email})// || await User.findOne({username});
+        const userExists = await User.findOne({email}) || await User.findOne({username});
         if(userExists) {
             res.status(400).json({error: "User already exists"});
             throw new Error("User already exists");
@@ -126,7 +127,7 @@ const updateUser = asyncHandler(async (req, res) => {
                 const {firstName, lastName, username, email, tel, birthDate, prov, addr, zip, avatar} = await user.save();
                 if(updateUser) {
                     res.status(200).json({
-                        updatedUser: {firstName, lastName, username, email, tel, birthDate, addr, zip, avatar}
+                        updatedUser: {firstName, lastName, username, email, tel, birthDate, prov, addr, zip, avatar}
                     });
                 }
                 else {

@@ -5,7 +5,7 @@ const {handlePathError} = require("../middlewares/errMiddleware");
 // create product
 const createProduct = asyncHandler(async (req, res) => {
 	if(Object.keys(req.body).length) {
-		let data = {name, cover, images, video, descriptor, category, countInStock, price} = req.body;
+		let data = {name, price, salePrice, discount, pictures, shortDetails, description, stock, _new, sale, category, colors, tags, rating, variants} = req.body;
 		const user = req.user._id;
 		data = {...data, user};
 		try {
@@ -57,14 +57,25 @@ const updateMyProduct = asyncHandler(async (req, res) => {
 		if(req.user._id === req.params.id) {
 			try {
 				const product = await Product.findById(req.params.id);
-				const data = {name, cover, images, video, description, category, countInStock, price} = req.body;
+				const {name, price, salePrice, discount, pictures, shortDetails, description, stock, _new, sale, category, colors, tags, rating, variants} = req.body;
+				const data = {name, price, salePrice, discount, pictures, shortDetails, description, stock, _new, sale, category, colors, tags, rating, variants};
+
 				product.name = name || product.name;
-				product.cover = cover || product.cover;
-				product.images = images || product.images;
-				product.video = video || product.video;
-				product.description = description || product.description;
-				product.countInStock = countInStock || product.countInStock;
 				product.price = price || product.price;
+				product.salePrice = salePrice || product.salePrice;
+				product.discount = discount || product.discount;
+				product.pictures = pictures || product.pictures;
+				product.shortDetails = shortDetails || product.shortDetails;
+				product.description = description || product.description;
+				product.stock = stock || product.stock;
+				product._new = pr_newi_newce || product._new;
+				product.sale = sale || product.sale;
+				product.category = category || product.category;
+				product.colors = colors || product.colors;
+				product.tags = tags || product.tags;
+				product.rating = rating || product.rating;
+				product.variants = variants || product.variants;
+				
 				try {
 					const updatedProduct = await product.save();
 					if(updatedProduct) {

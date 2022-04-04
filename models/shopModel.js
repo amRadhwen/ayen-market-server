@@ -5,13 +5,13 @@ const { Schema, model } = require("mongoose");
 const shopSchema = new Schema({
 	name: {
 		type: String,
-		required: true
-		unique
+		required: true,
+		unique: true
 	},
 	desc: {
 		type: String,
 		required: true
-	}
+	},
 	addr: {
 		type: String,
 		required: true
@@ -19,9 +19,36 @@ const shopSchema = new Schema({
 	cover: {
 		type: String,
 	},
-	logo: {
+	avatar: {
 		type: String,
-	}
+	},
+	socials: [
+		{
+			facebook: {
+				type: String
+			}
+		},
+		{
+			instagram: {
+				type: String
+			}
+		},
+		{
+			linkedin: {
+				type: String
+			}
+		},
+		{
+			twitter: {
+				type: String
+			}
+		},
+		{
+			youtube: {
+				type: String
+			}
+		}
+	]
 }, {
 	timestamps: true
 })

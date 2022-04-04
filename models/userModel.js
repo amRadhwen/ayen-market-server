@@ -10,14 +10,16 @@ const userSchema = new Schema({
     lastName: {
         type: String,
         required: true
-    },/*
+    },
     username: {
         type: String,
         required: true,
         unique: true
-    },*/
+    },
     tel: {
-        type: String
+        type: String,
+        required: true,
+        unique: true
     },
     email: {
         type: String,
@@ -42,6 +44,10 @@ const userSchema = new Schema({
     },
     zip: {
         type: Number,
+        required: true
+    },
+    role: {
+        type: String,
         required: true
     },
     isAdmin: {
